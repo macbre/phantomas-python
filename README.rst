@@ -8,7 +8,6 @@ In order to use this module you need `phantomas` "binary" installed in your syst
 ::
 
     sudo make install
-::
 
 This will run node.js' `npm` that will install phantomas globally.
 
@@ -28,5 +27,3 @@ Module's API
     
     print results.getMetric('requests')  # get the "requests" metric
     print json.dumps(results.getOffenders('requests'), indent=True)  # get offenders for the "requests" metric
-::
-
