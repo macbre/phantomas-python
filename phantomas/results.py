@@ -1,0 +1,3 @@
+"""
+phantomas results wrapper
+"""
