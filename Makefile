@@ -1,10 +1,11 @@
-.PHONY: test coverage lint
-
 project_name = phantomas
 coverage_options = --include='$(project_name)/*' --omit='$(project_name)/test/*,*__init__.py'
 
 install:
 	npm install --global phantomas
+
+example:
+	python examples/example.py
 
 test:
 	py.test -x $(project_name)
@@ -20,4 +21,3 @@ coverage:
 
 lint:
 	pep8 $(project_name)/; pylint $(project_name)/
-
