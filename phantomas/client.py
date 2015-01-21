@@ -6,7 +6,7 @@ import logging
 
 from subprocess import Popen, PIPE
 
-from phantomas.errors import PhantomasError
+from .errors import PhantomasError
 
 
 class Phantomas(object):
