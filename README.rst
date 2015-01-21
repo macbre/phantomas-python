@@ -1,5 +1,8 @@
 Python module for easy integration with `phantomas <https://github.com/macbre/phantomas>`__
 
+.. image:: https://travis-ci.org/macbre/phantomas-python.svg?branch=master
+    :target: https://travis-ci.org/macbre/phantomas-python
+
 Install
 -------
 
