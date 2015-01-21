@@ -21,9 +21,8 @@ Module's API
     
     results = Phantomas(
         url="http://example.com",
-        modules=['foo', 'bar'],
-        runs=5
-    )
+        modules=['headers', 'requestsStats']
+    ).run()
     
     print results.getMetric('requests')  # get the "requests" metric
     print json.dumps(results.getOffenders('requests'), indent=True)  # get offenders for the "requests" metric
