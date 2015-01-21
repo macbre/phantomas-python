@@ -66,7 +66,7 @@ class Phantomas(object):
         self._logger.debug("completed with return code #{returncode}".
                            format(returncode=returncode))
 
-        if returncode != 0:
+        if stderr != '':
             self._logger.debug("stderr: {stderr}".format(stderr=stderr))
             raise PhantomasError("Got #{returncode} return code".
                                  format(returncode=returncode))
@@ -86,14 +86,17 @@ class Phantomas(object):
 
         for key, value in options.iteritems():
             if value is True:
+                # key: True
                 # --key
                 args.append('--{key}'.format(key=key))
-            elif isinstance(value, (list, tuple)):
+            elif hasattr(value, '__iter__'):
+                # key: ['foo', 'bar']
                 # --key=foo,bar
                 values = [str(val) for val in value]
                 args.append('--{key}={values}'.format(
                     key=key, values=','.join(values)))
             else:
+                # key: 'foo'
                 # --key=foo
                 args.append('--{key}={value}'.format(key=key, value=value))
 

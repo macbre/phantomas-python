@@ -3,7 +3,7 @@ Set of unit tests for helper functions
 """
 import unittest
 
-from phantomas import Phantomas
+from ..client import Phantomas
 
 
 class FormatArgsTestClass(unittest.TestCase):
