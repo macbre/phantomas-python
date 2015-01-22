@@ -84,7 +84,7 @@ class Phantomas(object):
         """ Convert hash/key options into arguments list """
         args = list()
 
-        for key, value in options.iteritems():
+        for key, value in options.items():
             if value is True:
                 # key: True
                 # --key
