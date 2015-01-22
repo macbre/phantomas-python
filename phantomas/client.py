@@ -6,7 +6,7 @@ import logging
 
 from subprocess import Popen, PIPE
 
-from .errors import PhantomasError
+from .errors import PhantomasRunError, PhantomasResponseParsingError
 from .utils import format_args
 
 
@@ -53,15 +53,16 @@ class Phantomas(object):
             pid = process.pid
             self._logger.debug("running as PID #{pid}".format(pid=pid))
         except OSError as ex:
-            raise PhantomasError("Failed to run phantomas: exit code #{errno}".
-                                 format(errno=ex.errno))
+            raise PhantomasRunError(
+                "Failed to run phantomas: exit code #{errno}".
+                format(errno=ex.errno))
 
         # wait to complete
         try:
             stdout, stderr = process.communicate()
             returncode = process.returncode
         except Exception:
-            raise PhantomasError("Failed to complete the run")
+            raise PhantomasRunError("Failed to complete the run")
 
         # check the response code
         self._logger.debug("completed with return code #{returncode}".
@@ -69,14 +70,14 @@ class Phantomas(object):
 
         if stderr != '':
             self._logger.debug("stderr: {stderr}".format(stderr=stderr))
-            raise PhantomasError("Got #{returncode} return code".
-                                 format(returncode=returncode))
+            raise PhantomasRunError("Got #{returncode} return code".
+                                    format(returncode=returncode))
 
         # try parsing the response
         try:
             results = json.loads(stdout)
         except Exception:
-            raise PhantomasError("Unable to parse the response")
+            raise PhantomasResponseParsingError("Unable to parse the response")
 
         return results
 

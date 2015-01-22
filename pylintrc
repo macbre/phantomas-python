@@ -28,6 +28,8 @@ const-rgx = (([A-Z_][A-Z0-9_]{2,30})|([a-z_][a-z0-9_]{2,30})|(__.*__))$
 argument-rgx = [a-z_][a-z0-9_]*$
 # Regular expression which should only match correct variable names
 variable-rgx = [a-z_][a-z0-9_]*$
+# unit tests
+method-rgx=(([a-z_][a-z0-9_]{2,30})|(setUp)|(tearDown))$
 
 [FORMAT]
 # Maximum number of characters on a single line
