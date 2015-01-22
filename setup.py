@@ -25,6 +25,7 @@ setup(
     author='Maciej Brencz',
     author_email='maciej.brencz@gmail.com',
     install_requires=[
+        "coverage==3.7.1",
         'pytest==2.6.4',
     ],
     include_package_data=True,
