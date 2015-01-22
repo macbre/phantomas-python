@@ -15,9 +15,9 @@ class UtilsTestClass(unittest.TestCase):
         assert is_sequence([])
         assert is_sequence([1, 2, 3])
         assert is_sequence((1, 2, 3))
-        assert is_sequence({})
-        assert is_sequence({'foo': 'bar'})
 
+        assert not is_sequence({})
+        assert not is_sequence({'foo': 'bar'})
         assert not is_sequence(123)
         assert not is_sequence('test')
         assert not is_sequence(None)
