@@ -1,13 +1,13 @@
 """
-Set of unit tests for helper functions
+Set of unit tests for utility functions
 """
 import unittest
 
 from ..client import Phantomas
 
 
-class FormatArgsTestClass(unittest.TestCase):
-    """  Unit tests for Phantomas class """
+class PhantomasUtilsTestClass(unittest.TestCase):
+    """  Unit tests for Phantomas class utility functions """
 
     def test_format_args(self):
         """  Unit tests for Phantomas.format_args method """
