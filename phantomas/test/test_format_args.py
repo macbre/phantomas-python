@@ -15,4 +15,6 @@ class PhantomasUtilsTestClass(unittest.TestCase):
         self.assertEqual(Phantomas.format_args(dict(foo="bar")), ['--foo=bar'])
         self.assertEqual(Phantomas.format_args(dict(check=True)), ['--check'])
         self.assertEqual(Phantomas.format_args(
+            dict(no_check=True)), ['--no-check'])
+        self.assertEqual(Phantomas.format_args(
             dict(list=['foo', 'bar', 123])), ['--list=foo,bar,123'])

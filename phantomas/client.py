@@ -85,6 +85,9 @@ class Phantomas(object):
         args = list()
 
         for key, value in options.items():
+            # convert foo_bar key into --foo-bar option
+            key = key.replace('_', '-')
+
             if value is True:
                 # key: True
                 # --key
