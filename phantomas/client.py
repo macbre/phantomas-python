@@ -7,6 +7,7 @@ import logging
 from subprocess import Popen, PIPE
 
 from .errors import PhantomasError
+from .utils import format_args
 
 
 class Phantomas(object):
@@ -36,7 +37,7 @@ class Phantomas(object):
         """ Perform phantomas run """
         self._logger.info("running for <{url}>".format(url=self._url))
 
-        args = self.format_args(self._options)
+        args = format_args(self._options)
         self._logger.debug("command: {cmd} / args: {args}".
                            format(cmd=self.CMD, args=args))
 
@@ -78,32 +79,6 @@ class Phantomas(object):
             raise PhantomasError("Unable to parse the response")
 
         return results
-
-    @staticmethod
-    def format_args(options):
-        """ Convert hash/key options into arguments list """
-        args = list()
-
-        for key, value in options.items():
-            # convert foo_bar key into --foo-bar option
-            key = key.replace('_', '-')
-
-            if value is True:
-                # key: True
-                # --key
-                args.append('--{key}'.format(key=key))
-            elif hasattr(value, '__iter__'):
-                # key: ['foo', 'bar']
-                # --key=foo,bar
-                values = [str(val) for val in value]
-                args.append('--{key}={values}'.format(
-                    key=key, values=','.join(values)))
-            else:
-                # key: 'foo'
-                # --key=foo
-                args.append('--{key}={value}'.format(key=key, value=value))
-
-        return args
 
     def __repr__(self):
         return '<Phantomas for {url}>'.format(url=self._url)
