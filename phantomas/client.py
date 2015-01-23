@@ -64,14 +64,19 @@ class Phantomas(object):
         except Exception:
             raise PhantomasRunError("Failed to complete the run")
 
+        # for Python 3.x - decode bytes to string
+        stdout = stdout.decode('utf8')
+        stderr = stderr.decode('utf8')
+
         # check the response code
         self._logger.debug("completed with return code #{returncode}".
                            format(returncode=returncode))
 
         if stderr != '':
             self._logger.debug("stderr: {stderr}".format(stderr=stderr))
-            raise PhantomasRunError("Got #{returncode} return code".
-                                    format(returncode=returncode))
+            raise PhantomasRunError(
+                "Got #{returncode} return code, stderr: {stderr}".
+                format(returncode=returncode, stderr=stderr))
 
         # try parsing the response
         try:

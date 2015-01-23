@@ -19,5 +19,5 @@ test = Phantomas(
 
 results = test.run()
 
-print test
-print results
+print(test)
+print(results)
