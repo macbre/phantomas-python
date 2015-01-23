@@ -7,7 +7,5 @@ python:
   - "3.4"
 install:
   - pip install .
-# command to run linters and the tests
-script:
-  - make lint
-  - make test
+# command to run tests
+script: make test
