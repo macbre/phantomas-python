@@ -56,8 +56,7 @@ class Phantomas(object):
             self._logger.debug("running as PID #{pid}".format(pid=pid))
         except OSError as ex:
             raise PhantomasRunError(
-                "Failed to run phantomas: exit code #{errno}".
-                format(errno=ex.errno))
+                "Failed to run phantomas", ex.errno)
 
         # wait to complete
         try:
