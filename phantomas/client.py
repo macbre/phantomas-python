@@ -8,6 +8,7 @@ from subprocess import Popen, PIPE
 
 from .errors import PhantomasRunError,\
     PhantomasResponseParsingError, PhantomasFailedError
+from .results import Results
 from .utils import format_args
 
 
@@ -84,7 +85,7 @@ class Phantomas(object):
         except Exception:
             raise PhantomasResponseParsingError("Unable to parse the response")
 
-        return results
+        return Results(self._url, results)
 
     def __repr__(self):
         return '<Phantomas for {url}>'.format(url=self._url)
