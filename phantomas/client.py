@@ -6,7 +6,8 @@ import logging
 
 from subprocess import Popen, PIPE
 
-from .errors import PhantomasRunError, PhantomasResponseParsingError
+from .errors import PhantomasRunError,\
+    PhantomasResponseParsingError, PhantomasFailedError
 from .utils import format_args
 
 
@@ -74,9 +75,8 @@ class Phantomas(object):
 
         if stderr != '':
             self._logger.debug("stderr: {stderr}".format(stderr=stderr))
-            raise PhantomasRunError(
-                "Got #{returncode} return code, stderr: {stderr}".
-                format(returncode=returncode, stderr=stderr))
+
+            raise PhantomasFailedError(stderr.strip(), returncode)
 
         # try parsing the response
         try:
