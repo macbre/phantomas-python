@@ -12,7 +12,7 @@ In order to use this module you need `phantomas` "binary" installed in your syst
 
     sudo make install
 
-This will run node.js' `npm` that will install phantomas globally.
+This will run `npm install -g phantomas`.
 
 Module's API
 ------------
@@ -26,6 +26,12 @@ Module's API
         url="http://example.com",
         modules=['headers', 'requestsStats']
     ).run()
-    
-    print results.getMetric('requests')  # get the "requests" metric
-    print json.dumps(results.getOffenders('requests'), indent=True)  # get offenders for the "requests" metric
+
+    print('Generator: ', results.get_generator())   # phantomas v1.9.0
+    print('Metrics:   ', json.dumps(results.get_metrics(), indent=True, sort_keys=True))
+    print('Domains:   ', json.dumps(results.get_offenders('domains'), indent=True))
+
+    # assertions
+    assert results.get_metric('notFound') == 0
+    assert results.get_metric('requests') < 5
+
