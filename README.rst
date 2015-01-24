@@ -1,5 +1,11 @@
 Python module for easy integration with `phantomas <https://github.com/macbre/phantomas>`__
 
+.. image:: https://pypip.in/version/phantomas/badge.svg
+    :target: https://pypi.python.org/pypi/phantomas/
+    :alt: Latest Version
+.. image:: https://pypip.in/py_versions/phantomas/badge.svg
+    :target: https://pypi.python.org/pypi/phantomas/
+    :alt: Supported Python versions
 .. image:: https://travis-ci.org/macbre/phantomas-python.svg?branch=master
     :target: https://travis-ci.org/macbre/phantomas-python
 
