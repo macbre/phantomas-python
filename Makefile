@@ -4,9 +4,6 @@ coverage_options = --include='$(project_name)/*' --omit='$(project_name)/test/*,
 install:
 	npm install --global phantomas
 
-example:
-	python examples/example.py
-
 test:
 	py.test -x $(project_name)
 

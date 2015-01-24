@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from setuptools import setup
+from setuptools import setup, find_packages
 
 from phantomas import __version__
 
@@ -30,6 +30,7 @@ setup(
         "pep8==1.5.7",
         "pylint==1.2.1",
     ],
+    packages=find_packages(),
     include_package_data=True,
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -37,8 +38,10 @@ setup(
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Topic :: Internet :: WWW/HTTP",
+        "Programming Language :: Python :: 2",
         "Programming Language :: Python :: 2.6",
         "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.2",
         "Programming Language :: Python :: 3.3",
         "Programming Language :: Python :: 3.4",
