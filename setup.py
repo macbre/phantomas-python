@@ -25,7 +25,10 @@ setup(
     author='Maciej Brencz',
     author_email='maciej.brencz@gmail.com',
     install_requires=[
+        "coverage==3.7.1",
         'pytest==2.6.4',
+        "pep8==1.5.7",
+        "pylint==1.2.1",
     ],
     include_package_data=True,
     classifiers=[

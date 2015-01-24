@@ -1,5 +1,8 @@
 Python module for easy integration with `phantomas <https://github.com/macbre/phantomas>`__
 
+.. image:: https://travis-ci.org/macbre/phantomas-python.svg?branch=master
+    :target: https://travis-ci.org/macbre/phantomas-python
+
 Install
 -------
 
@@ -9,7 +12,7 @@ In order to use this module you need `phantomas` "binary" installed in your syst
 
     sudo make install
 
-This will run node.js' `npm` that will install phantomas globally.
+This will run `npm install -g phantomas`.
 
 Module's API
 ------------
@@ -21,9 +24,14 @@ Module's API
     
     results = Phantomas(
         url="http://example.com",
-        modules=['foo', 'bar'],
-        runs=5
-    )
-    
-    print results.getMetric('requests')  # get the "requests" metric
-    print json.dumps(results.getOffenders('requests'), indent=True)  # get offenders for the "requests" metric
+        modules=['headers', 'requestsStats']
+    ).run()
+
+    print('Generator: ', results.get_generator())   # phantomas v1.9.0
+    print('Metrics:   ', json.dumps(results.get_metrics(), indent=True, sort_keys=True))
+    print('Domains:   ', json.dumps(results.get_offenders('domains'), indent=True))
+
+    # assertions
+    assert results.get_metric('notFound') == 0
+    assert results.get_metric('requests') < 5
+

@@ -1,0 +1,44 @@
+# WIKIA BASE PYLINTRC FILE
+# ========================
+#
+# This file should be used as a starting point
+# for pylintrc files in other Wikia projects.
+
+
+[MASTER]
+# Don't pickle collected data for later comparisons (it's buggy)
+persistent = no
+
+[MESSAGES CONTROL]
+# Disable the message, report, category or checker with the given id(s). You
+# can either give multiple identifier separated by comma (,) or put this option
+# multiple time.
+#
+# @see http://docs.pylint.org/features.html#id23
+disable=W0212,R0903,R0904
+
+[REPORTS]
+# Colorize output
+output-format = colorized
+# Don't display a full report by default
+reports = no
+
+[BASIC]
+# Regular expression for global variable names
+const-rgx = (([A-Z_][A-Z0-9_]{2,30})|([a-z_][a-z0-9_]{2,30})|(__.*__))$
+# Regular expression which should only match correct argument names
+argument-rgx = [a-z_][a-z0-9_]*$
+# Regular expression which should only match correct variable names
+variable-rgx = [a-z_][a-z0-9_]*$
+# unit tests
+method-rgx=(([a-z_][a-z0-9_]{2,30})|(setUp)|(tearDown))$
+
+[FORMAT]
+# Maximum number of characters on a single line
+max-line-length = 120
+
+[SIMILARITIES]
+# Minimum lines number of a similarity
+min-similarity-lines = 10
+# Ignore imports when computing similarities
+ignore-imports = yes
