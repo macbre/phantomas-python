@@ -1,9 +1,12 @@
-Python module for easy integration with `phantomas <https://github.com/macbre/phantomas>`__
+Python module for easy integration with `phantomas <https://github.com/macbre/phantomas>`__ - PhantomJS-based modular web performance metrics collector
 
-.. image:: https://pypip.in/version/phantomas/badge.svg
+.. image:: https://pypip.in/version/phantomas/badge.svg?style=flat
     :target: https://pypi.python.org/pypi/phantomas/
     :alt: Latest Version
-.. image:: https://pypip.in/py_versions/phantomas/badge.svg
+.. image:: https://pypip.in/download/phantomas/badge.svg?period=week&style=flat
+    :target: https://pypi.python.org/pypi/phantomas/
+    :alt: Latest Version
+.. image:: https://pypip.in/py_versions/phantomas/badge.svg?style=flat
     :target: https://pypi.python.org/pypi/phantomas/
     :alt: Supported Python versions
 .. image:: https://travis-ci.org/macbre/phantomas-python.svg?branch=master
@@ -33,11 +36,12 @@ Module's API
         modules=['headers', 'requestsStats']
     ).run()
 
-    print('Generator: ', results.get_generator())   # phantomas v1.9.0
-    print('Metrics:   ', json.dumps(results.get_metrics(), indent=True, sort_keys=True))
-    print('Domains:   ', json.dumps(results.get_offenders('domains'), indent=True))
+    print('Generator: ' + results.get_generator())   # phantomas v1.9.0
+    print('\nMetrics: ' + json.dumps(results.get_metrics(), indent=True, sort_keys=True))
+    print('\nDomains: ' + json.dumps(results.get_offenders('domains'), indent=True))
 
     # assertions
     assert results.get_metric('notFound') == 0
     assert results.get_metric('requests') < 5
 
+More docs coming soon! Meanwhile please refer to `example/example.py` script.
