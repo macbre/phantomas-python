@@ -41,3 +41,29 @@ class Results(object):
             url=self._url,
             count=len(self._metrics)
         )
+
+
+class Runs(object):
+    """ Phantomas runs wrapper """
+
+    def __init__(self, url, data):
+        for key in ["runs", "stats"]:
+            assert data.get(key) is not None
+
+        self._url = url
+        self._runs = [Results(url=self.url, data=run_data) for run_data in data["runs"]]
+        self._stats = data.get("stats")
+
+    @property
+    def url(self):
+        return self._url
+
+    @property
+    def stats(self):
+        return self._stats
+
+    @property
+    def runs(self):
+        return self._runs or []
+
+
