@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Run phantomas against http://example.com and display the results
+Run phantomas several times against http://example.com and display the results
 """
 import json
 import logging
@@ -11,6 +11,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 test = Phantomas(
     url="http://example.com",
+    runs=3,
     modules=[
         'domains',
         'headers',
@@ -20,9 +21,17 @@ test = Phantomas(
 )
 
 try:
-    results = test.run()
+    runs = test.run()
+    results = runs.runs[0]
 
     print(test)
+
+    print(runs)
+    print('Runs:      {0}'.format(len(runs.runs)))
+
+    print('\nStats:')
+    print(json.dumps(runs.stats, indent=True))
+
     print(results)
 
     print('Generator: ' + results.get_generator())
