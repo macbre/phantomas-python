@@ -16,6 +16,16 @@ class PhantomasTestClass(unittest.TestCase):
 
         assert str(instance) == '<Phantomas for {url}>'.format(url=self.URL)
 
+    def test_exec_path(self):
+        """  Test if Phantomas respects exec_path parameter """
+        instance = Phantomas(url=self.URL)
+
+        assert instance._cmd == instance.CMD
+
+        instance = Phantomas(url=self.URL, exec_path='/foo/bar')
+
+        assert instance._cmd == '/foo/bar'
+
     def test_options_passing(self):
         """ Test constructor options passing """
         instance = Phantomas(url=self.URL)

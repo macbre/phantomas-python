@@ -2,6 +2,7 @@
 Set of unit tests for Phantomas runner
 """
 import unittest
+import os
 
 from ..client import Phantomas
 from ..errors import PhantomasRunError, PhantomasResponseParsingError
@@ -16,12 +17,15 @@ class PhantomasRunTestClass(unittest.TestCase):
 
     def test_run_os_error(self):
         """ Test failed execution of the binary """
-        self._instance.CMD = 'foobar123'
+        self._instance._cmd = 'foobar123'
 
         self.assertRaises(PhantomasRunError, self._instance.run)
 
     def test_run_json_parsing_failed(self):
         """ Test failed parsing of JSON """
-        self._instance.CMD = '/bin/true'
+        if os.path.isfile('/usr/bin/true'):
+            self._instance._cmd = '/usr/bin/true'
+        else:
+            self._instance._cmd = '/bin/true'
 
         self.assertRaises(PhantomasResponseParsingError, self._instance.run)

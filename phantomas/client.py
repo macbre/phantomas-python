@@ -29,6 +29,12 @@ class Phantomas(object):
 
         self._url = url
 
+        if 'exec_path' in kwargs:
+            self._cmd = kwargs['exec_path']
+            del kwargs['exec_path']
+        else:
+            self._cmd = self.CMD
+
         self._options = dict()
         self._options.update(kwargs)
 
@@ -40,13 +46,13 @@ class Phantomas(object):
         self._logger.info("running for <{url}>".format(url=self._url))
 
         args = format_args(self._options)
-        self._logger.debug("command: {cmd} / args: {args}".
-                           format(cmd=self.CMD, args=args))
+        self._logger.debug("command: `{cmd}` / args: {args}".
+                           format(cmd=self._cmd, args=args))
 
         # run the process
         try:
             process = Popen(
-                args=[self.CMD] + args,
+                args=[self._cmd] + args,
                 stdin=PIPE,
                 stdout=PIPE,
                 stderr=PIPE
@@ -56,7 +62,7 @@ class Phantomas(object):
             self._logger.debug("running as PID #{pid}".format(pid=pid))
         except OSError as ex:
             raise PhantomasRunError(
-                "Failed to run phantomas", ex.errno)
+                "Failed to run phantomas: {0}".format(ex), ex.errno)
 
         # wait to complete
         try:
