@@ -33,7 +33,7 @@ Module's API
     
     results = Phantomas(
         url="http://example.com",
-        exec_path="/my/path/to/phantomas"     # optional
+        exec_path="/my/path/to/phantomas",     # optional
         modules=['headers', 'requestsStats']
     ).run()
 

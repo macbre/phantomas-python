@@ -1,8 +1,8 @@
 """
 Set of unit tests for Phantomas runner
 """
-import unittest
 import os
+import unittest
 
 from ..client import Phantomas
 from ..errors import PhantomasRunError, PhantomasResponseParsingError
