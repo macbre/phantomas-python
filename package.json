@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "dependencies": {
+    "phantomas": "^1.11.0"
+  }
+}
