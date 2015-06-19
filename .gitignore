@@ -54,3 +54,8 @@ coverage.xml
 docs/_build/
 
 .idea/
+
+# nodejs
+node_modules/
+
+*.swp
