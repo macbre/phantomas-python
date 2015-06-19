@@ -5,7 +5,7 @@ install:
 	npm install --global phantomas
 
 test:
-	py.test -x $(project_name)
+	py.test -x $(project_name) -v
 
 coverage:
 	rm -f .coverage*
