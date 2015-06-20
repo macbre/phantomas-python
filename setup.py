@@ -1,10 +1,25 @@
 #!/usr/bin/env python
+import os
+
 from setuptools import setup, find_packages
+from setuptools.command.install import install
 
 from phantomas import __version__
 
 with open('README.rst', 'r') as f:
     long_description = f.read()
+
+
+class InstallNpm(install):
+    """
+    Run npm install
+    """
+    def run(self):
+        install.run(self)
+        print self.install_libbase
+        print self.build_base
+        os.system('make install')
+
 
 setup(
     name='phantomas',
@@ -30,6 +45,9 @@ setup(
         "pep8==1.5.7",
         "pylint==1.2.1",
     ],
+    cmdclass={
+        'install': InstallNpm
+    },
     packages=find_packages(),
     include_package_data=True,
     classifiers=[

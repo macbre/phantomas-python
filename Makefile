@@ -2,7 +2,6 @@ project_name = phantomas
 coverage_options = --include='$(project_name)/*' --omit='$(project_name)/test/*,*__init__.py'
 
 install:
-	npm install -g npm
 	npm install
 
 test:
