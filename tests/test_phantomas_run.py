@@ -4,8 +4,8 @@ Set of unit tests for Phantomas runner
 import os
 import unittest
 
-from ..client import Phantomas
-from ..errors import PhantomasRunError, PhantomasResponseParsingError
+from phantomas.client import Phantomas
+from phantomas.errors import PhantomasRunError, PhantomasResponseParsingError
 
 
 class PhantomasRunTestClass(unittest.TestCase):

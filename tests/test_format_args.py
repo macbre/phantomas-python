@@ -3,7 +3,7 @@ Set of unit tests for utility functions
 """
 import unittest
 
-from ..utils import format_args, is_sequence
+from phantomas.utils import format_args, is_sequence
 
 
 class UtilsTestClass(unittest.TestCase):

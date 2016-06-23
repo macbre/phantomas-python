@@ -4,13 +4,16 @@ coverage_options = --include='$(project_name)/*' --omit='$(project_name)/test/*,
 install:
 	npm install --global phantomas
 
+test_requirements:
+	pip install -U -e .\[tests\]
+
 test:
-	py.test -x $(project_name)
+	py.test -x
 
 coverage:
 	rm -f .coverage*
 	rm -rf htmlcov/*
-	coverage run -p -m py.test -x $(project_name)
+	coverage run -p -m py.test -x
 	coverage combine
 	coverage html -d htmlcov $(coverage_options)
 	coverage xml -i
@@ -21,3 +24,5 @@ lint:
 
 publish:
 	python setup.py sdist upload -r pypi
+
+setup: install test_requirements

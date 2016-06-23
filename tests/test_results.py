@@ -3,7 +3,7 @@ Set of unit tests for Results class
 """
 import unittest
 
-from ..results import Results
+from phantomas.results import Results
 
 
 class ResultsTestClass(unittest.TestCase):
