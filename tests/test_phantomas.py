@@ -3,7 +3,7 @@ Set of unit tests for Phantomas class
 """
 import unittest
 
-from ..client import Phantomas
+from phantomas.client import Phantomas
 
 
 class PhantomasTestClass(unittest.TestCase):
