@@ -24,14 +24,17 @@ setup(
     ],
     author='Maciej Brencz',
     author_email='maciej.brencz@gmail.com',
-    install_requires=[
-        "coverage==4.0.3",
-        'pytest==2.8.7',
-        "pep8==1.7.0",
-        "pylint==1.5.4",
-    ],
+    install_requires=[],
     packages=find_packages(),
     include_package_data=True,
+    extras_require={
+        'tests': [
+            "coverage==4.0.3",
+            'pytest==2.8.7',
+            "pep8==1.7.0",
+            "pylint==1.5.4",
+        ],
+    },
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Console",

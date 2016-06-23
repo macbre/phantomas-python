@@ -6,6 +6,6 @@ python:
   - "3.3"
   - "3.4"
 install:
-  - pip install .
+  - make test_requirements
 # command to run tests
 script: make test

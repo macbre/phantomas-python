@@ -4,6 +4,9 @@ coverage_options = --include='$(project_name)/*' --omit='$(project_name)/test/*,
 install:
 	npm install --global phantomas
 
+test_requirements:
+	pip install -U -e .\[tests\]
+
 test:
 	py.test -x $(project_name)
 
@@ -21,3 +24,5 @@ lint:
 
 publish:
 	python setup.py sdist upload -r pypi
+
+setup: install test_requirements
