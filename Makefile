@@ -24,5 +24,6 @@ lint:
 
 publish:
 	python setup.py sdist upload -r pypi
+	./tag.sh
 
 setup: install test_requirements
